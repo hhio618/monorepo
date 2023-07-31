@@ -13,8 +13,9 @@ interface HeaderProps {
 const MintNftVideo = ({ children }: HeaderProps): JSX.Element => {
   const router = useRouter();
   const assetId = router.query.assetId?.toString() ?? '';
-  const assetData = router.query.assetData?.toString();
+  const assetData = Buffer.from(router.query.assetData?.toString() || "", 'base64').toString();
   const parsedAssetData = JSON.parse(assetData || '{}') as AssetData;
+  console.log(parsedAssetData);
   return (
     <LivepeerConfig client={useLivepeerClient}>
       <Box>

@@ -214,7 +214,7 @@ const CreateAndViewAsset = () => {
               pathname: '/mint-nft-video',
               query: { 
                 assetId: createdAsset[0].id,
-                assetData: JSON.stringify(assetData),
+                assetData: Buffer.from(JSON.stringify(assetData)).toString('base64'),
               },
             })}
             className="mint-button"
